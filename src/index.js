@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './assets/css/root.css';
+import './assets/css/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { makeCssRoot, setCssVariables } from './styles';
-
-const rootCss = document.querySelector(':root');
-const rootVariables = makeCssRoot();
-setCssVariables(rootCss, rootVariables);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

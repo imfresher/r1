@@ -1,0 +1,36 @@
+:root {
+  --r1-font-family:           Inter,-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  --r1-font-size:             1rem;
+  --r1-font-weight:           400;
+  --r1-line-height:           1.6;
+
+  --r1-h1-font-size:          2.5rem;
+  --r1-h2-font-size:          2.2rem;
+  --r1-h3-font-size:          2rem;
+  --r1-h4-font-size:          1.6rem;
+  --r1-h5-font-size:          1.2rem;
+  --r1-h6-font-size:          1rem;
+
+  --r1-white:                 #fff;
+  --r1-black:                 #000;
+  --r1-blue:                  #5eb0f1;
+  --r1-green:                 #8bc34a;
+  --r1-cyan:                  #5eb0f1;
+  --r1-yellow:                #ffb240;
+  --r1-red:                   #f76a5f;
+
+  --r1-gray-100:              #f5f6f7;
+  --r1-gray-200:              #fafbfc;
+  --r1-gray-300:              #b6b6b6;
+  --r1-gray-400:              #d9dbde;
+  --r1-gray-500:              #c3c3c3;
+  --r1-gray-600:              #c5ced4;
+
+  --r1-color-primary:         var(--r1-blue);
+  --r1-color-secondary:       #e5e5e5;
+  --r1-color-tertiary:        #93d7f8;
+  --r1-color-success:         var(--r1-green);
+  --r1-color-info:            var(--r1-cyan);
+  --r1-color-warning:         var(--r1-yellow);
+  --r1-color-danger:          var(--r1-red);
+}
