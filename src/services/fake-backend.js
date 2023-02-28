@@ -20,7 +20,7 @@ function fakeBackend() {
           case url.match(/\/subtitles\/\d+$/) && opts.method === 'GET':
             return getSubtitleById();
           case url.match(/\/subtitles\/\d+$/) && opts.method === 'PUT':
-            return updateSubtitleUser();
+            return updateSubtitle();
           case url.match(/\/subtitles\/\d+$/) && opts.method === 'DELETE':
             return deleteSubtitle();
           default:
@@ -54,11 +54,21 @@ function fakeBackend() {
         return ok(basicDetails(subtitle));
       }
 
-      function updateSubtitleUser() {
+      function updateSubtitle() {
+        let params = body();
+        let subtitle = subtitles.find(x => x.id === idFromUrl());
+
+        // update and save subtitle
+        Object.assign(subtitle, params);
+        localStorage.setItem(subtitlesKey, JSON.stringify(subtitles));
+
         return ok();
       }
 
       function deleteSubtitle() {
+        subtitles = subtitles.filter(x => x.id !== idFromUrl());
+        localStorage.setItem(subtitlesKey, JSON.stringify(subtitles));
+
         return ok();
       }
 

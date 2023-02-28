@@ -33,4 +33,7 @@
   --r1-color-info:            var(--r1-cyan);
   --r1-color-warning:         var(--r1-yellow);
   --r1-color-danger:          var(--r1-red);
+
+  --r1-body-color:            #212529;
+  --r1-body-background-color: #f7f7f8;
 }

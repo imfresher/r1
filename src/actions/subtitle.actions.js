@@ -29,6 +29,7 @@ function useSubtitleActions() {
     store,
     getAll,
     getById,
+    destroy,
     resetSubtitles: useResetRecoilState(subtitlesAtom),
     resetSubtitle: useResetRecoilState(subtitleAtom)
   };
@@ -40,7 +41,8 @@ function useSubtitleActions() {
   }
 
   function getAll() {
-    return fetchWrapper.get(baseUrl).then(setSubtitles);
+    return fetchWrapper.get(baseUrl);
+    // return fetchWrapper.get(baseUrl).then(setSubtitles);
     // const response = subtitlesData;
     // return setSubtitles(response);
   }
@@ -52,6 +54,22 @@ function useSubtitleActions() {
     // });
 
     // return setSubtitle(response);
+  }
+
+  function destroy(id) {
+    setSubtitles(subtitles => subtitles.map(x => {
+        // add isDeleting prop to user being deleted
+        if (x.id === id)
+            return { ...x, isDeleting: true };
+
+        return x;
+    }));
+
+    return fetchWrapper.delete(`${baseUrl}/${id}`)
+        .then(() => {
+            // remove user from list after deleting
+            setSubtitles(subtitles => subtitles.filter(x => x.id !== id));
+        });
   }
 }
 
