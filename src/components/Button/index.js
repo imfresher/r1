@@ -1,8 +1,3 @@
-/** @jsxImportSource @emotion/react */
-import { css, Global } from '@emotion/react';
-import { mergeClass } from '../../styles';
-import styles from './styles';
-
 export default function Button(props) {
   const {
     children,
@@ -13,8 +8,7 @@ export default function Button(props) {
   const classType = type ? `btn-${type}` : '';
 
   return <button
-    className={mergeClass(['btn', classType])}
-    css={[styles.container]}
+    className='btn'
     type={type ? type : 'default'}
     {...rest}
   >{children}</button>;
