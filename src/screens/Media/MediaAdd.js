@@ -33,14 +33,26 @@ const steps = [
 
 function MediaAdd() {
   const [current, setCurrent] = useState(0);
+  const [form] = Form.useForm();
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
-  const next = () => {
-    setCurrent(current + 1);
+  const handleNext = async () => {
+    try {
+        await form.validateFields();
+        setCurrent((prev) => prev + 1);
+    } catch {}
   };
 
-  const prev = () => {
+  const handlePrev = () => {
     setCurrent(current - 1);
+  };
+
+  const onFinish = (values) => {
+    console.log('Success:', values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
   };
 
   return (
@@ -53,15 +65,29 @@ function MediaAdd() {
             current={current}
             items={items}
           />
-          <div>{steps[current].content}</div>
+
+          <div style={{ padding: '50px 0 20px' }}>
+            <Form
+              form={form}
+              name="subtitleLanguagesForm"
+              labelCol={{ span: 4 }}
+              wrapperCol={{ span: 12 }}
+              style={{ maxWidth: 600 }}
+              initialValues={{ remember: true }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              autoComplete="off"
+            >{steps[current].content}</Form>
+          </div>
+
           <div style={{ marginTop: 24 }}>
             {current > 0 && (
-              <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+              <Button style={{ margin: '0 8px' }} onClick={() => handlePrev()}>
                 Previous
               </Button>
             )}
             {current < steps.length - 1 && (
-              <Button type="primary" onClick={() => next()}>
+              <Button type="primary" onClick={() => handleNext()}>
                 Next
               </Button>
             )}
